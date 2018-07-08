@@ -109,34 +109,38 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script type="text/javascript">
-      var burguerButton = document.getElementById('burguerButton');
-      var menu = document.getElementById('menu');
-      var consulta = window.matchMedia('(max-width:500px)');
+            var burguerButton = document.getElementById('burguerButton');
+        var menu = document.getElementById('menu');
+        var consulta = window.matchMedia('(max-width:500px)');
 
-      if (consulta.matches) {
-        burguerButton.addEventListener('touchstart',Active);
-      } else {
-        burguerButton.removeEventListener('touchstart',Active);
-      }
-    // Funcion del menu activa
+        if (consulta.matches) {
+          burguerButton.addEventListener('touchstart', Active);
+        } else {
+          burguerButton.removeEventListener('touchstart', Active);
+        }
+        // Funcion del menu activa
 
-    function Active() {
-      menu.classList.toggle('active')
-    }
-    //Carga de Imagnes con Blazy.js
-    var bLazy = new Blazy({
-        selector: 'img' // all images
-    });
+        function Active() {
+          menu.classList.toggle('active');
+        }
+        //Carga de Imagnes con Blazy.js
+        var bLazy = new Blazy({
+          selector: 'img' // all images
+        });
 
-    var cuerpo = document.body;
-    //hammer
-    // Array funcion
-    let menuActivo = () => menu.classList.add('active');
-    function menuDesactivado() {menu.classList.remove('active');}
-   //--------------------------------------------------------
-    var hammertime = new Hammer(cuerpo);
-      hammertime.on('swiperight', menuActivo);
-      hammertime.on('swipeleft', menuDesactivado);
+        var cuerpo = document.body;
+        //hammer
+        // Array funcion
+        var menuActivo = function menuActivo() {
+          return menu.classList.add('active');
+        };
+        function menuDesactivado() {
+          menu.classList.remove('active');
+        }
+        //--------------------------------------------------------
+        var hammertime = new Hammer(cuerpo);
+        hammertime.on('swiperight', menuActivo);
+        hammertime.on('swipeleft', menuDesactivado);
     </script>
 
   </body>
